@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('umkm', function (Blueprint $table) {
             $table->id();
-            $table->string('umkm_name');
+            $table->string('umkm_name')->unique();
             $table->string('owner_name');
             $table->text('umkm_desc');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->unique();
+            $table->string('email')->unique();
             $table->text('address');
+            $table->string('images');
             $table->timestamps();
         });
     }

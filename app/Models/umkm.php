@@ -18,6 +18,7 @@ class umkm extends Model
         'phone',
         'email',
         'address',
+        'images',
     ];
 
     public function produk()

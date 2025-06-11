@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('id_kategori')->constrained('kategori')->onDelete('cascade');
+            $table->foreignId('id_umkm')->constrained('umkm')->onDelete('cascade');
             $table->decimal('rating', 2, 1);
             $table->bigInteger('price');
             $table->text('description');
