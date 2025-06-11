@@ -11,7 +11,7 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $data = produk::with('kategori')->get();
+        $data = produk::with('kategori', 'umkm')->get();
         return response()->json($data);
     }
 
@@ -20,6 +20,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'id_kategori' => 'required|exists:kategori,id',
+            'id_umkm' => 'required|exists:umkm,id',
             'rating' => 'required|numeric|between:0,5',
             'price' => 'required|numeric',
             'description' => 'required|max:255',
@@ -44,7 +45,7 @@ class ProdukController extends Controller
 
     public function show(string $id)
     {
-        $data = produk::with('kategori')->find($id);
+        $data = produk::with('kategori', 'umkm')->find($id);
         if (!$data) {
             return response()->json([
                 'status' => false,
@@ -64,6 +65,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'id_kategori' => 'required|exists:kategori,id',
+            'id_umkm' => 'required|exists:umkm,id',
             'rating' => 'required|numeric|between:0,5',
             'price' => 'required|numeric',
             'description' => 'required|max:255',
