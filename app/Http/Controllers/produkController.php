@@ -2,10 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
-class produkController extends Controller
+
+class ProdukController extends Controller
 {
+    public function getProduk()
+    {
+        $response = Http::get('https://dummyjson.com/products');
+
+        if($response->successful()) {
+            $produk = $response->json();
+            return response()->json($produk); // Kirim data ke json
+        }
+
+        return response()->json(['error' => 'unable to fetch data'], 500);
+    }
+
     public function index()
     {
         $data['result'] = \App\Models\produk::all();
