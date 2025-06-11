@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\umkm;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class umkmController extends Controller
 {
@@ -19,8 +20,9 @@ class umkmController extends Controller
             'umkm_name' => 'required|max:100',
             'owner_name' => 'required|max:100',
             'umkm_desc' => 'required|max:255',
-            'phone' => 'required|numeric',
-            'email' => 'required|email|max:50|unique:umkm, email',
+            'phone' => 'required|digits_between:10,15',
+            'email' => 'required|email|max:50|unique:umkm,email',
+            'address' => 'required|max:255',
             'images' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -64,7 +66,13 @@ class umkmController extends Controller
             'owner_name' => 'required|max:100',
             'umkm_desc' => 'required|max:255',
             'phone' => 'required|digits_between:10,15',
-            'email' => 'required|email|max:50|unique:umkm, email' . $id,
+            'email' => [
+                'required',
+                'email',
+                'max:50',
+                Rule::unique('umkm', 'email')->ignore($id),
+            ],
+            'address' => 'required|max:255',
             'images' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
