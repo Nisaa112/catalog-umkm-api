@@ -1,8 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 
-Route::get('/products', [ProdukController::class, 'getProduk']);
-Route::get('/kategori', [KategoriController::class, 'getKategori']);
+use Illuminate\Support\Facades\Route;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::apiResource('produk', ProdukController::class);
+Route::apiResource('kategori', KategoriController::class);
+
+
+// Route::get('/api/test', function () {
+//     return response()->json(['status' => 'API OK']);
+// });

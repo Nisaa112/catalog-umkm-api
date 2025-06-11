@@ -5,14 +5,14 @@ use App\Http\Controllers\KategoriController;
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::middleware('api')->prefix('api')->group(function () {
-    Route::get('/products', [ProdukController::class, 'getProduk']);
-    Route::get('/kategori', [KategoriController::class, 'getKategori']);
+Route::get('/', function () {
+    return view('welcome');
 });
+
+// Route::middleware('api')->prefix('api')->group(function () {
+//     Route::apiResource('produk', ProdukController::class);
+//     Route::apiResource('kategori', KategoriController::class);
+// });
 
 // Route::get('/api/test', function () {
 //     return response()->json(['status' => 'API OK']);
