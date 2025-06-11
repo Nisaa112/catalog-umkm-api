@@ -20,6 +20,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'id_kategori' => 'required|exists:kategori,id',
+            'rating' => 'required|numeric|between:0,5',
             'price' => 'required|numeric',
             'description' => 'required|max:255',
             'images' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -63,6 +64,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:100',
             'id_kategori' => 'required|exists:kategori,id',
+            'rating' => 'required|numeric|between:0,5',
             'price' => 'required|numeric',
             'description' => 'required|max:255',
             'images' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',

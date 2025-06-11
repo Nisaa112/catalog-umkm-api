@@ -14,6 +14,8 @@ class produk extends Model
     protected $fillable = [
         'title',
         'id_kategori',
+        'id_umkm',
+        'rating',
         'price',
         'description',
         'images',
@@ -21,6 +23,11 @@ class produk extends Model
 
     public function kategori()
     {
-        return $this->belongsTo(kategori::class);
+        return $this->belongsTo(kategori::class, 'id_kategori');
+    }
+
+    public function umkm()
+    {
+        return $this->belongsTo(umkm::class, 'id_umkm');
     }
 }

@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produk', function (Blueprint $table) {
+        Schema::create('umkm', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->foreignId('id_kategori')->constrained('kategori')->onDelete('cascade');
-            $table->decimal('rating', 2, 1);
-            $table->bigInteger('price');
-            $table->text('description');
-            $table->string('images');
+            $table->string('umkm_name');
+            $table->string('owner_name');
+            $table->text('umkm_desc');
+            $table->string('phone');
+            $table->string('email');
+            $table->text('address');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produk');
+        Schema::dropIfExists('umkm');
     }
 };
